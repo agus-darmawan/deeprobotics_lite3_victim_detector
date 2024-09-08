@@ -8,7 +8,7 @@ import Camera from "./Camera";
 import Camera1 from "./Camera1";
 export default function Dashboard_ros() {
 
-    const { connected, pointCloudData, personStatus } = RosComponent();
+    const { connected, pointCloudData, personStatus, timeStamp,yaw } = RosComponent();
     const now = new Date();
     const hours = now.getHours();
     const minutes = now.getMinutes().toString().padStart(2, '0');  // Tambahkan '0' jika perlu
@@ -43,11 +43,7 @@ export default function Dashboard_ros() {
                     </div>
 
                     <div className="-space-y-1">
-                        <h1 className="font-bold text-2xl text-[#D4D4D8]"> 164 <span className="text-sm text-[#71717A]">m</span></h1>
-                    </div>
-
-                    <div className="-space-y-1">
-                        <h1 className="font-bold text-lg text-[#71717A]">3hr 48min</h1>
+                        <h1 className="font-bold text-lg text-[#71717A]">{timeStamp}</h1>
                         <h1 className="font-bold text-lg text-[#71717A]">Berjalan</h1>
                     </div>
 
@@ -61,7 +57,7 @@ export default function Dashboard_ros() {
                <Camera />
             </div>
             <div className="bg-[#0b0b0c] bg-opacity-50 p-4  shadow-md flex flex-col relative overflow-hidden height-auto text-foreground box-border backdrop-blur-md rounded-lg saturate-100 z-[3]">
-             <Camera />
+             <Camera1 />
             </div>
 
 

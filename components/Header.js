@@ -2,10 +2,11 @@
 import { BsFillCarFrontFill, BsFillPlayFill, BsFillSunFill } from "react-icons/bs";
 
 import React, { useState, useEffect } from 'react';
+import RosComponent from "@/data/RosComponent";
 
 
 export default function Header(props) {
-    const {status } = props;
+    const {status, yaw } = RosComponent();
     const d = new Date();
     let day = d.getDate();
     let hour = d.getHours();
@@ -20,15 +21,6 @@ export default function Header(props) {
 
     let fullDate = `${monthAbbreviation} ${day} of ${year}`
 
-    const [angle, setAngle] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setAngle(prevAngle => (prevAngle + 5) % 360);
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
 
     return (
         <header className="fixed bottom-0 w-full z-10 ">
@@ -62,8 +54,8 @@ export default function Header(props) {
                                         <div className="absolute h-[5rem] w-[5rem] rounded-full border-[0.3rem] border-[#374151] z-[12]"></div>
 
                                         <div className="absolute h-[3rem] w-[3rem] rounded-full z-[14] grid place-items-center">
-                                            <h1 className=" absolute font-bold text-lg text-[#f8fafc]"> {angle}°</h1>
-                                            <div className="absolute w-[6.5rem] h-[0.5rem]  transition-transform duration-500" style={{ transform: `rotate(${angle}deg)` }}>
+                                            <h1 className=" absolute font-bold text-lg text-[#f8fafc]"> {yaw}°</h1>
+                                            <div className="absolute w-[6.5rem] h-[0.5rem]  transition-transform duration-500" style={{ transform: `rotate(${yaw}deg)` }}>
                                                 <div className="absolute w-[2rem] h-[2rem] rounded-full left-0 flex items-center justify-center z-[14]">
                                                     <BsFillPlayFill className="w-7 h-7 text-[#0ea5e9] rotate-[55deg]	translate-y-[-0.7rem]" />
 

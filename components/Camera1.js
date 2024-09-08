@@ -9,12 +9,12 @@ const Camera1 = () => {
     >
       <ImageViewer
         id="object_detection"
-        host="http://192.168.88.22"
+        host="http://192.168.1.103"
         port={8080}
         height={480}
         width={540}
         quality={75}
-        topic="/object_image/image_raw"
+        topic="/camera/color/image_raw"
       />
     </div>
   );
