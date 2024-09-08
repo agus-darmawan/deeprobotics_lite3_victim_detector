@@ -4,7 +4,8 @@ import { BsFillCarFrontFill, BsFillPlayFill, BsFillSunFill } from "react-icons/b
 import React, { useState, useEffect } from 'react';
 
 
-export default function Header() {
+export default function Header(props) {
+    const {status } = props;
     const d = new Date();
     let day = d.getDate();
     let hour = d.getHours();
@@ -74,89 +75,12 @@ export default function Header() {
 
                                 </div>
 
-
-                                <div className="basis-1/2  h-full grid place-items-center">
-                                    <div className="relative h-[5rem] w-[6rem] grid place-items-center">
-
-
-
-
-
-                                        <div className="absolute h-[5rem] w-[5rem] rounded-full border-[0.3rem] border-[#f59e0b] z-[12]"></div>
-
-                                        <div className="absolute h-[2.5rem] w-full bg-[#0b0b0c] bottom-0 z-[13]">
-
-                                            <div className="absolute h-[1rem] w-[1rem] bg-[#0b0b0c] left-0 z-[13]"></div>
-                                            <div className="absolute h-[0.5rem] w-[0.5rem] bg-[#f8fafc] left-1 z-[13] rounded-full"></div>
-
-                                            <div className="absolute h-[1rem] w-[1rem] bg-[#0b0b0c] right-0 z-[13]"></div>
-                                            <div className="absolute h-[0.5rem] w-[0.5rem] bg-[#f8fafc] right-1 z-[13] rounded-full"></div>
-                                        </div>
-
-                                        <div className="absolute h-[4rem] w-[3rem] bottom-0 z-[13] grid place-items-center">
-                                            <h1 className="font-bold text-lg text-[#f8fafc]"> 25°c</h1>
-                                            <BsFillSunFill className="w-7 h-7 text-[#f59e0b]" />
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-
-                                {/* <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 ring-4 ring-indigo-700">
-                                    <WiDaySunnyOvercast className=" absolute w-10 h-10" />
-                                </div>
-
-                                <div className="flex flex-col items-center justify-center ">
-                                    <p>Cloudy</p>
-                                    <p>20°</p>
-                                </div> */}
                             </div>
                             <div className=" basis-3/5 w-full h-full border-zinc-800 flex flex-col justify-center space-y-2">
 
-                                <div className="flex flex-row items-center justify-between text-white">
-                                    <div className=" flex space-x-2 flex items-center justify-center">
-                                        <div className="w-[2rem] h-[2rem] bg-[#5b21b6] flex items-center justify-center rounded-lg">
-                                            <BsFillCarFrontFill className="w-6 h-6 text-white" />
-                                        </div>
-                                        <h1 className="font-light text-sm"> <span className="font-bold text-lg">6</span> min</h1>
-                                    </div>
-                                    <h1 className="font-bold text-lg"> <span className="font-light text-sm ">get off after</span> park lane</h1>
-
-                                </div>
-                                <div className="relative bg-[#5b21b6] h-[2.5rem] w-full rounded-full p-1 flex items-center z-[12]">  {/* Outer container */}
-                                    <div className="w-full h-1 px-3 rounded-full">
-                                        <div
-                                            className="h-full bg-[#5b2196] transition-all duration-500 ease-out z-[14]" // Updated duration from 100 to 500
-                                            style={{ width: `${20}%` }}
-
-                                        ></div>
-                                        <div
-                                            className="absolute top-1/2 transform -translate-y-1/2 bg-[#a78bfa] w-7 h-7 rounded-full flex items-center justify-center z-[14]"
-                                            style={{ left: `calc(${20}% - 0.5rem)` }}
-                                        >
-                                            <div className="w-4 h-4 bg-white rounded-full"></div>
-
-                                        </div>
+                               <h1 className="font-bold text-lg text-[#D4D4D8] text-center">{status}</h1>
 
 
-                                    </div>
-                                    <div className="absolute bg-[#8b5cf6] w-[2.5rem] h-[2rem] rounded-full  right-1 flex items-center justify-center z-[14]">
-                                        <BsFillCarFrontFill className="w-6 h-6 text-white" />
-
-                                    </div>
-                                    <div className="absolute  w-full h-1 px-3 z-[13]">
-                                        <div className="bg-[#8b5cf6] h-1">
-                                        </div>
-                                    </div>
-                                    <div className="absolute  w-full h-1 px-3 flex items-center justify-center z-[13]">
-                                        <div className="w-5 h-5 bg-[#5b21b6] rounded-full flex items-center justify-center">
-                                            <div className="w-2 h-2 bg-[#8b5cf6] rounded-full"></div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
                             </div>
                         </div>
                     </div>

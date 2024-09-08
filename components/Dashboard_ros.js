@@ -5,11 +5,17 @@ import RosComponent from "../data/RosComponent"
 import Vol_progressBar from "./Vol_progressBar";
 import Ros_status from "./Ros_status";
 import Camera from "./Camera";
+import Camera1 from "./Camera1";
 export default function Dashboard_ros() {
 
-    const { connected, pointCloudData } = RosComponent();
+    const { connected, pointCloudData, personStatus } = RosComponent();
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');  // Tambahkan '0' jika perlu
 
-    let progress = 50;
+    const time = `${hours}:${minutes}`;
+
+    let progress = 80;
     return (
         <div className=" h-5/6 mx-auto w-11/12 grid grid-cols-4 gap-4 grid-rows-2 p-7">
 
@@ -28,7 +34,7 @@ export default function Dashboard_ros() {
                 <div className="basis-1/2 h-full flex flex-col justify-between p-4">
                     <div className="-space-y-1">
                         <h1 className="font-bold text-lg text-[#71717A]"> UPDATED</h1>
-                        <h1 className="font-bold text-lg text-[#71717A]"> 10:35</h1>
+                        <h1 className="font-bold text-lg text-[#71717A]">{time}</h1>
                     </div>
 
                     <div className="-space-y-1">
@@ -37,7 +43,7 @@ export default function Dashboard_ros() {
                     </div>
 
                     <div className="-space-y-1">
-                        <h1 className="font-bold text-2xl text-[#D4D4D8]"> 164 <span className="text-sm text-[#71717A]">mi</span></h1>
+                        <h1 className="font-bold text-2xl text-[#D4D4D8]"> 164 <span className="text-sm text-[#71717A]">m</span></h1>
                     </div>
 
                     <div className="-space-y-1">

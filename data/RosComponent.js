@@ -5,6 +5,7 @@ function RosComponent() {
     const [ros, setRos] = useState(null);
     const [connected, setConnected] = useState(false);
     const [pointCloudData, setPointCloudData] = useState(null);
+    const [personStatus, setPersonStatus] = useState(null);
 
     useEffect(() => {
         const rosInstance = new ROSLIB.Ros({
@@ -31,14 +32,28 @@ function RosComponent() {
                 name: '/points_raw',
                 messageType: 'sensor_msgs/PointCloud2'
             });
+            const personStatusTopic = new ROSLIB.Topic({
+                ros: rosInstance,
+                name: '/fall_detection',
+                messageType: 'std_msgs/String'
+            });
 
             pointCloudTopic.subscribe(function (message) {
                 setPointCloudData(message);
             });
+            personStatusTopic.subscribe(function (message) {
+                if (message.data === 'victim') {
+                setPersonStatus("Korban Terdeteksi");
+             } else {
+                 setPersonStatus("Tidak Ada Korban Terdeteksi");
+              }}
+
+            );
 
             // Cleanup
             return () => {
                 pointCloudTopic.unsubscribe();
+                personStatusTopic.unsubscribe();
             };
         }
 
@@ -46,7 +61,7 @@ function RosComponent() {
     }, [connected]);
 
 
-    return { connected, pointCloudData };
+    return { connected, pointCloudData, personStatus };
 }
 
 export default RosComponent;
